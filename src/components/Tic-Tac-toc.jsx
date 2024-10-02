@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-const App = () => {
+const TicTacToc = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const winner = calculateWinner(board);
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    const winningPlayer = calculateWinner(board);
+    if (winningPlayer) {
+      setWinner(winningPlayer);
+      Swal.fire({
+        title: 'Congratulations!',
+        text: `Winner is ${winningPlayer}`,
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    }
+  }, [board]);
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
@@ -27,18 +41,19 @@ const App = () => {
   const resetGame = () => {
     setBoard(Array(9).fill(null));
     setIsXNext(true);
+    setWinner(null); // Reset winner
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold mb-8">Tic Tac Toe</h1>
-      <div className="grid grid-cols-3 gap-2 mb-6">
+      <h1 className="text-3xl font-bold mb-8">Tic Tac Toe Game</h1>
+      <div className="grid grid-cols-3 gap-2 mb-6 bg-slate-500">
         {board.map((_, index) => renderSquare(index))}
       </div>
-      {winner ? (
-        <p className="text-xl font-bold mb-4">Winner: {winner}</p>
-      ) : (
+      {!winner ? (
         <p className="text-xl font-bold mb-4">Next Player: {isXNext ? 'X' : 'O'}</p>
+      ) : (
+        <p className="text-xl font-bold mb-4">Winner: {winner}</p>
       )}
       <button
         onClick={resetGame}
@@ -70,5 +85,4 @@ const calculateWinner = (squares) => {
   return null;
 };
 
-export default App;
-
+export default TicTacToc;
