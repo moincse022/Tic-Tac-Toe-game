@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// Translation resources
+
 const resources = {
     en: {
       translation: {
@@ -30,10 +30,10 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en', // default language
-  fallbackLng: 'en', // fallback language
+  lng: 'en', 
+  fallbackLng: 'en', 
   interpolation: {
-    escapeValue: false, // React already does escaping
+    escapeValue: false, 
   },
 });
 
