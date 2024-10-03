@@ -6,7 +6,7 @@ const resources = {
     en: {
       translation: {
         title: "Tic Tac Toe Game",
-        welcome: "Welcome to the Game!",
+        welcome: "Welcome to the Tic Tac Toe Game!",
         nextPlayer: "Next Player: {{player}}",
         reset: "Reset Game",
         congratulations: "Congratulations!",
@@ -17,7 +17,7 @@ const resources = {
     bn: {
       translation: {
         title: "টিক ট্যাক টো গেম",
-        welcome: "গেমে স্বাগতম!",
+        welcome: "টিক ট্যাক টো গেমটিতে স্বাগতম!",
         nextPlayer: "পরবর্তী খেলোয়াড়: {{player}}",
         reset: "গেম রিসেট",
         congratulations: "অভিনন্দন!",
